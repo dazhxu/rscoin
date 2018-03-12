@@ -98,7 +98,7 @@ class ActiveTx():
     def balances(self):
         balances = defaultdict(int)
         for (_, _, key_id, value) in self.Tx:
-            balances[keys[key_id][0]] += value
+            balances[self.keys[key_id][0]] += value
         return balances
 
     def get_value(self, value):
@@ -404,7 +404,7 @@ def main():
         sig = mykey.sign(tx.id())
 
         ## Now we test the Commit
-        #tx_ser = tx.serialize()
+        tx_ser = tx.serialize()
         #core = map(b64encode, [tx_ser, mykey.pub.export(), sig])
         #data = " ".join(["Commit", str(len(core))] + core)
 
